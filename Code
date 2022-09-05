@@ -1,0 +1,44 @@
+from datetime import datetime
+from pygame import mixer
+from time import time
+
+
+def playalarm(song, stopper):
+
+    mixer.init()
+    mixer.music.load(song)
+    mixer.music.play()
+    while True:
+           query = input("  ")
+           if query == stopper:
+             mixer.music.stop()
+             break
+
+def log_message(msg):
+    with open(hydration.txt, "a") as f:
+        f.write(f"{msg} {datetime.now()} \n")
+
+
+if __name__ == '__main__':
+   playalarm = ("yt1s.com - minute (1).mp3","stop")
+   initwater = time()
+   initexcercise = time()
+   initeyes = time()
+   watersec = 5
+   excercisesec = 10
+   eyessec = 15
+
+   while True:
+       if time() - initwater >watersec:
+           playalarm("yt1s.com - minute (1).mp3","Drank")
+           initwater = time()
+           log_message("Drank water at")
+
+       if time() - initexcercise > excercisesec:
+           playalarm("yt1s.com - minute (1).mp3", "Doing")
+           initexcercise = time()
+           log_message("Done excercise at")
+       if time() - initeyes >eyessec:
+           playalarm("yt1s.com - minute (1).mp3","Working")
+           initeyes = time()
+           log_message("Rest at")
